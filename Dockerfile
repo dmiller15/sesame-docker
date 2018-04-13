@@ -7,6 +7,7 @@ RUN apt-get update -qq && \
     apt-get clean
 
 RUN R -e "install.packages('devtools')"
+RUN R -e "library(devtools)"
 RUN R -e "devtools:install_github('zwdzwd/sesame',ref='1082d17')"
 
-ENV SESAME 00.01.03
+ENV SESAME 00.01.04
