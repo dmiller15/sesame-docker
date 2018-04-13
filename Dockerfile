@@ -1,4 +1,4 @@
-FROM r-base 
+FROM r-base:3.4.4 
 
 MAINTAINER Daniel P. Miller <dmiller15@uchicago.edu>
 
@@ -10,4 +10,4 @@ RUN R -e "install.packages('devtools'); \
           source('https://bioconductor.org/biocLite.R'); \
           devtools::install_github('zwdzwd/sesame',ref='1082d17')"
 
-ENV SESAME 00.01.09
+ENV SESAME 01.00.00
