@@ -8,7 +8,6 @@ RUN apt-get update -qq && \
 
 RUN R -e "install.packages('devtools'); \
           source('https://bioconductor.org/biocLite.R'); \
-          devtools::install_github('zwdzwd/sesame',ref='1082d17'); \
-          library(sesame)"
+          devtools::install_github('zwdzwd/sesame',ref='1082d17')"
 
-ENV SESAME 00.01.08
+ENV SESAME 00.01.09
