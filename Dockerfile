@@ -10,4 +10,6 @@ RUN R -e "install.packages('devtools'); \
           source('https://bioconductor.org/biocLite.R'); \
           devtools::install_github('zwdzwd/sesame',ref='1082d17')"
 
-ENV SESAME 01.00.00
+ADD sesame-lvl3betas.R /home/docker
+
+ENV SESAME 01.00.01
