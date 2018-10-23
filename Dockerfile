@@ -9,11 +9,13 @@ RUN apt-get update -qq \
   && install2.r \
     devtools 
 
+RUN mkdir /home/sesame-refs
+
 RUN R -e "source('https://bioconductor.org/biocLite.R'); \
           devtools::install_github('zwdzwd/sesame',ref='1082d17'); \
-          Sys.setenv(SESAMEHOME='/home/docker/sesame-refs/'); \
+          Sys.setenv(SESAMEHOME='/home/sesame-refs/'); \
           sesame::cacheBuiltInData()"
 
-ADD sesame-lvl3betas.R /home/docker
+ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
 ENV SESAME 01.01.00
