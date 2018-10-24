@@ -8,7 +8,7 @@ library(sesame)
 #    @return file containing the beta values
 
 args = commandArgs(trailingOnly=TRUE)
-Sys.setenv(SESAMEHOME='/home/docker/sesame-refs/')
+Sys.setenv(SESAMEHOME='/home/sesame-refs/')
 sset <- readIDATs(paste0(args[1],args[2]))[[1]]
 sset.nb <- noob(sset)
 sset.db <- dyeBiasCorrTypeINorm(sset.nb)

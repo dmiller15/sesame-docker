@@ -12,6 +12,7 @@ RUN apt-get update -qq \
 RUN mkdir /home/sesame-refs
 
 RUN R -e "source('https://bioconductor.org/biocLite.R'); \
+          biocLite("DNAcopy"); \
           devtools::install_github('zwdzwd/sesame',ref='1082d17'); \
           Sys.setenv(SESAMEHOME='/home/sesame-refs/'); \
           sesame::cacheBuiltInData()"
