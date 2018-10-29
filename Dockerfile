@@ -1,4 +1,4 @@
-FROM rocker/r-ver:3.5.0
+FROM rocker/r-ver:3.5.1
 
 RUN apt-get update -qq \
   && apt-get install -y \
@@ -8,11 +8,10 @@ RUN apt-get update -qq \
     libxml2-dev \
     zlib1g-dev
 
-RUN R -e "if (!requireNamespace("BiocManager", quietly=TRUE))
-              install.packages("BiocManager"); \
-          BiocManager::install(version = "devel"); \
-          BiocManager::valid(); \
-          BiocManager::install(c("sesame","sesameData","ExperimentHub",version="devel")"
+RUN R -e "install.packages('BiocManager'); \
+          library(BiocManager); \
+          BiocManager::install(version='3.8',update=TRUE,ask=FALSE); \
+          BiocManager::install(c('sesame','sesameData','ExperimentHub'),update=TRUE,ask=FALSE,version='3.8')"
 
 ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
