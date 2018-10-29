@@ -1,22 +1,21 @@
-FROM rocker/r-ver:3.4.4
+FROM rocker/r-ver:3.5.0
 
 RUN apt-get update -qq \
   && apt-get install -y \
     libcurl4-openssl-dev \
+    libssh2-1-dev \
     libssl-dev \
     libxml2-dev \
-    zlib1g-dev \
-  && install2.r \
-    devtools 
+    zlib1g-dev
 
-RUN mkdir /home/sesame-refs
-
-RUN R -e "source('https://bioconductor.org/biocLite.R'); \
-          biocLite('DNAcopy'); \
-          devtools::install_github('zwdzwd/sesame',ref='1082d17'); \
-          Sys.setenv(SESAMEHOME='/home/sesame-refs/'); \
-          sesame::cacheBuiltInData()"
+RUN R -e "if (!requireNamespace("BiocManager", quietly=TRUE))
+              install.packages("BiocManager"); \
+          BiocManager::install(version = "devel"); \
+          BiocManager::valid(); \
+          BiocManager::install(c("sesame","sesameData","ExperimentHub",version="devel")"
 
 ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
-ENV SESAME 01.01.00
+ENV SESAME 0.99.7
+ENV SESAMEDATA 0.99.5
+ENV EXPERIMENTHUB 1.7.7
