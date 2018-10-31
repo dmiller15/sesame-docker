@@ -13,6 +13,8 @@ RUN R -e "install.packages('BiocManager'); \
           BiocManager::install(version='3.8',update=TRUE,ask=FALSE); \
           BiocManager::install(c('sesame','sesameData','ExperimentHub'),update=TRUE,ask=FALSE,version='3.8')"
 
+RUN R -e "library(sesameData)"
+
 ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
 ENV SESAME 0.99.7
