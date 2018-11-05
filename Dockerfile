@@ -11,9 +11,10 @@ RUN apt-get update -qq \
 RUN R -e "install.packages('BiocManager'); \
           library(BiocManager); \
           BiocManager::install(version='3.8',update=TRUE,ask=FALSE); \
-          BiocManager::install(c('sesame','sesameData','ExperimentHub'),update=TRUE,ask=FALSE,version='3.8')"
+          BiocManager::install(c('sesame','sesameData'),update=TRUE,ask=FALSE,version='3.8')"
 
-RUN R -e "library(sesameData)"
+RUN R -e "library(sesameData); \
+          sesameDataCacheAll()"
 
 ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
