@@ -9,10 +9,9 @@ RUN apt-get update -qq \
   && install2.r \
     devtools 
 
-RUN mkdir /home/sesame-refs
-
-RUN R -e "source('https://bioconductor.org/biocLite.R'); \
-          biocLite('DNAcopy'); \
+RUN R -e "install.packages('BiocManager'); \
+          library(BiocManager); \
+          BiocManager::install(version='3.8',update=TRUE,ask=FALSE); \
           devtools::install_github('zwdzwd/sesameData',ref='7c3909a'); \
           devtools::install_github('zwdzwd/sesame')"
 
