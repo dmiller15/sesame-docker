@@ -14,7 +14,7 @@ RUN mkdir /home/sesame-refs
 RUN R -e "source('https://bioconductor.org/biocLite.R'); \
           biocLite('DNAcopy'); \
           devtools::install_github('zwdzwd/sesame'); \
-          devtools::install_github('zwdzwd/sesameData',ref='7c3909a'); \
+          devtools::install_github('zwdzwd/sesameData',ref='7c3909a')"
 
 RUN R -e "library(sesameData)"
 
