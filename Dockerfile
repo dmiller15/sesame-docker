@@ -13,7 +13,7 @@ RUN R -e "install.packages('BiocManager'); \
           library(BiocManager); \
           BiocManager::install(version='3.8',update=TRUE,ask=FALSE); \
           devtools::install_github('zwdzwd/sesameData',ref='7c3909a'); \
-          devtools::install_github('zwdzwd/sesame')"
+          BiocManager::install('sesame',update=TRUE,ask=FALSE,version='3.8')"
 
 RUN R -e "library(sesameData)"
 
