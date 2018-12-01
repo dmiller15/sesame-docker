@@ -1,4 +1,4 @@
-FROM rocker/r-ver:3.4.4
+FROM rocker/r-ver:3.5.1
 
 RUN apt-get update -qq \
   && apt-get install -y \
@@ -13,10 +13,12 @@ RUN mkdir /home/sesame-refs
 
 RUN R -e "source('https://bioconductor.org/biocLite.R'); \
           biocLite('DNAcopy'); \
-          devtools::install_github('zwdzwd/sesame',ref='1082d17'); \
-          Sys.setenv(SESAMEHOME='/home/sesame-refs/'); \
-          sesame::cacheBuiltInData()"
+          devtools::install_github('zwdzwd/sesame'); \
+          devtools::install_github('zwdzwd/sesameData',ref='7c3909a'); \
+
+RUN R -e "library(sesameData)"
 
 ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
-ENV SESAME 01.01.00
+ENV SESAME 0.99.7
+ENV SESAMEDATA 1.1.1 
