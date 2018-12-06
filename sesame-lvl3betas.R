@@ -8,8 +8,7 @@ library(sesame)
 #    @return file containing the beta values
 
 args = commandArgs(trailingOnly=TRUE)
-Sys.setenv(SESAMEHOME='/home/sesame-refs/')
-sset <- readIDATs(paste0(args[1],args[2]))[[1]]
+sset <- readIDATpair(paste0(args[1],args[2]))
 sset.nb <- noob(sset)
 sset.db <- dyeBiasCorrTypeINorm(sset.nb)
 level3.betas <- getBetas(sset.db)

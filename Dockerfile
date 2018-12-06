@@ -17,6 +17,9 @@ RUN R -e "install.packages('BiocManager'); \
 
 RUN R -e "library(sesameData)"
 
+ENV http_proxy "http://cloud-proxy:3128"
+ENV https_proxy "http://cloud-proxy:3128"
+
 ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
 ENV SESAME 0.99.7
