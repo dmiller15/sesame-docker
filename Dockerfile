@@ -24,3 +24,4 @@ ADD sesame-lvl3betas.R /home/sesame-scripts/sesame-lvl3betas.R
 
 ENV SESAME 0.99.7
 ENV SESAMEDATA 1.1.1 
+ENV GDC 0.1.0
